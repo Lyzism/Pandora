@@ -1,12 +1,10 @@
-'use client'
-
 import { useState } from 'react'
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 import { Bell, CreditCard, DollarSign, Home, Layers, Settings, User } from 'lucide-react'
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarProvider, SidebarRail, SidebarTrigger } from "@/components/ui/sidebar"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarProvider, SidebarRail, SidebarTrigger } from "@/components/ui/sidebar"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 
@@ -23,9 +21,9 @@ export default function Component() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   return (
-    <SidebarProvider>
+    <SidebarProvider open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
       <div className="flex h-screen overflow-hidden">
-        <Sidebar open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+        <Sidebar>
           <SidebarHeader>
             <h2 className="text-xl font-bold">Dashboard</h2>
           </SidebarHeader>
@@ -174,13 +172,13 @@ export default function Component() {
                       <XAxis
                         dataKey="name"
                         stroke="#888888"
-                        fontSize={12}
+                        tick={{ fontSize: 12, fill: "#888888" }}
                         tickLine={false}
                         axisLine={false}
                       />
                       <YAxis
                         stroke="#888888"
-                        fontSize={12}
+                        tick={{ fontSize: 12, fill: "#888888" }}
                         tickLine={false}
                         axisLine={false}
                         tickFormatter={(value) => `$${value}`}
